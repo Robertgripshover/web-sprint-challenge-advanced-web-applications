@@ -4,8 +4,10 @@ import PT from 'prop-types'
 const initialFormValues = { title: '', text: '', topic: '' }
 
 export default function ArticleForm(props) {
+
   const [values, setValues] = useState(initialFormValues)
   // ✨ where are my props? Destructure them here
+ //not sure what to do here yet
 
   useEffect(() => {
     // ✨ implement
@@ -27,8 +29,11 @@ export default function ArticleForm(props) {
   }
 
   const isDisabled = () => {
-    // ✨ implement
-    // Make sure the inputs have some values
+    if (values.title.trim().length > 0 && values.text.trim().length > 0 && values.topic.trim().length > 0) {
+      return false
+     } else {
+      return true
+     }
   }
 
   return (
