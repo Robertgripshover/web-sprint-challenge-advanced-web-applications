@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
-import axiosWithAuth from '../axios/index'
+
 
 export default function Articles(props) {
   // ✨ where are my props? Destructure them here
@@ -15,15 +15,17 @@ export default function Articles(props) {
   }, []); //<<<<< IMPORTANT, NEED TO PULL IN getArticles() IN FROM
   //App.js SOMEHOW!!
 
+  console.log(props.articles)
+
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
     // and use the articles prop to generate articles
     <div className="articles">
       <h2>Articles</h2>
       {
-        ![].length
+        !props.articles.length
           ? 'No articles yet'
-          : [].map(art => {
+          : props.articles.map(art => {
             return (
               <div className="article" key={art.article_id}>
                 <div>
