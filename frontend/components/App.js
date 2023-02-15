@@ -23,8 +23,8 @@ export default function App() {
 
   // ✨ Research `useNavigate` in React Router v.6
   const navigate = useNavigate()
-  const redirectToLogin = () => { /* ✨ implement */ '/', {replace: true}}
-  const redirectToArticles = () => { /* ✨ implement */ }
+  const redirectToLogin = () => { /* ✨ implement */ navigate('/')}
+  const redirectToArticles = () => { /* ✨ implement */ navigate('/articles')}
 
   const logout = () => {
     
@@ -47,9 +47,17 @@ export default function App() {
     // to the Articles screen. Don't forget to turn off the spinner!
     setMessage('')
     setSpinnerOn(true)
-    axios.post(loginUrl, username, password)
+    axios.post(`http://localhost:9000/api/login`, {username, password})
       .then(res => {
-        
+        console.log(res)
+        localStorage.setItem('token', res.data.token)
+        setMessage(res.data.message)
+        redirectToArticles()
+        setSpinnerOn(false)
+        //I need to put a navigate here to send me to articles
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
 
@@ -97,7 +105,7 @@ export default function App() {
           <Route path="articles" element={
             <>
               <ArticleForm />
-              <Articles />
+              <Articles getArticles={getArticles}/>
             </>
           } />
         </Routes>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import PT from 'prop-types'
-import axios from 'axios'
 
 const initialFormValues = {
   username: '',
@@ -16,18 +15,18 @@ export default function LoginForm(props) {
     setValues({ ...values, [id]: value })
   }
 
+
+
+
+
+//VVVVV I built these two out, I think they might need to go into the App.js
+
   const onSubmit = evt => {
     evt.preventDefault()
     // ✨ implement
-    axios.post(`http://localhost:9000/api/login`, values)
-      .then(res => {
-        console.log(res)
-        localStorage.setItem('token', res.data.token)
-        //I need to put a navigate here to send me to articles
-      })
-      .catch(err => {
-        console.log(err)
-      })
+     props.login(values) 
+    //^^^^^^^^^^^I THINK I NEED TO IMPORT THIS IN 
+    //FROM APP.JS AND PUT IN THE VALUES LIKE THIS.
   }
   
   const isDisabled = () => {
@@ -37,6 +36,12 @@ export default function LoginForm(props) {
     return true
    }
   }
+
+//^^^^ I built these two out, I think they might need to go into the App.js
+
+
+
+
 
 
 
