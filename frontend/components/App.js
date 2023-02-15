@@ -85,6 +85,7 @@ export default function App() {
         console.log(err)
         setMessage('Sorry, must be signed in')
         setSpinnerOn(false)
+        redirectToLogin()
       })
   }
 
