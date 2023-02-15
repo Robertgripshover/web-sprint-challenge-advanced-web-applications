@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
+import axiosWithAuth from '../axios/index'
 
 export default function Articles(props) {
   // ✨ where are my props? Destructure them here
@@ -10,7 +11,14 @@ export default function Articles(props) {
 
   useEffect(() => {
     // ✨ grab the articles here, on first render only
-  })
+    axiosWithAuth().get(`/articles`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, []); //<<<<< CURRENTLY WORKING ON THIS USEEFFECT
 
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
