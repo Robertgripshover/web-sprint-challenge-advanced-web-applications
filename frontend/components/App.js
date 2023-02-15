@@ -28,7 +28,6 @@ export default function App() {
   const redirectToArticles = () => { /* ✨ implement */ navigate('/articles')}
 
   const logout = () => {
-    
     // ✨ implement
     // If a token is in local storage it should be removed,
     // and a message saying "Goodbye!" should be set in its proper state.
@@ -56,7 +55,6 @@ export default function App() {
         setMessage(res.data.message)
         redirectToArticles()
         setSpinnerOn(false)
-        //I need to put a navigate here to send me to articles
       })
       .catch(err => {
         console.log(err)
@@ -94,6 +92,17 @@ export default function App() {
     // The flow is very similar to the `getArticles` function.
     // You'll know what to do! Use log statements or breakpoints
     // to inspect the response from the server.
+    setMessage('')
+    setSpinnerOn(true)
+    axiosWithAuth().post('/articles')
+      .then(res => {
+        console.log(res)
+        setMessage(res.data.message)
+      })
+      .catch(err => {
+        console.log(err)
+        setMessage(err.data.message)
+      })
   }
 
   const updateArticle = ({ article_id, article }) => {
@@ -121,7 +130,7 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login}/>} /> {/*<<< added this login={login} props looking thing */}
           <Route path="articles" element={
             <>
-              <ArticleForm />
+              <ArticleForm postArticle={postArticle}/>
               <Articles getArticles={getArticles} articles={articles}/>
             </>
           } />
