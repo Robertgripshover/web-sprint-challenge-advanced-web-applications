@@ -5,9 +5,14 @@ import LoginForm from './LoginForm'
 import Message from './Message'
 import ArticleForm from './ArticleForm'
 import Spinner from './Spinner'
+import axios from 'axios'
 
 const articlesUrl = 'http://localhost:9000/api/articles'
 const loginUrl = 'http://localhost:9000/api/login'
+
+//I THINK THAT I NEED TO PULL IN 
+//USERNAME AND PASSWORD AS PROPS FROM
+//LOGIN FORM SOMEHOW UP HERE
 
 export default function App() {
   // ✨ MVP can be achieved with these states
@@ -18,7 +23,7 @@ export default function App() {
 
   // ✨ Research `useNavigate` in React Router v.6
   const navigate = useNavigate()
-  const redirectToLogin = () => { /* ✨ implement */ }
+  const redirectToLogin = () => { /* ✨ implement */ '/', {replace: true}}
   const redirectToArticles = () => { /* ✨ implement */ }
 
   const logout = () => {
@@ -28,6 +33,9 @@ export default function App() {
     // and a message saying "Goodbye!" should be set in its proper state.
     // In any case, we should redirect the browser back to the login screen,
     // using the helper above.
+    window.localStorage.removeItem('token')
+    setMessage({main: 'Goodbye, come again'})
+    redirectToLogin()
   }
 
   const login = ({ username, password }) => {
@@ -37,6 +45,12 @@ export default function App() {
     // On success, we should set the token to local storage in a 'token' key,
     // put the server success message in its proper state, and redirect
     // to the Articles screen. Don't forget to turn off the spinner!
+    setMessage('')
+    setSpinnerOn(true)
+    axios.post(loginUrl, username, password)
+      .then(res => {
+        
+      })
   }
 
   const getArticles = () => {
@@ -79,7 +93,7 @@ export default function App() {
           <NavLink id="articlesScreen" to="/articles">Articles</NavLink>
         </nav>
         <Routes>
-          <Route path="/" element={<LoginForm />} />
+          <Route path="/" element={<LoginForm login={login}/>} /> {/*<<< added this login={login} props looking thing */}
           <Route path="articles" element={
             <>
               <ArticleForm />

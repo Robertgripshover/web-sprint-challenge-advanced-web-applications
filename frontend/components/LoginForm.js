@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PT from 'prop-types'
+import axios from 'axios'
 
 const initialFormValues = {
   username: '',
@@ -18,11 +19,16 @@ export default function LoginForm(props) {
   const onSubmit = evt => {
     evt.preventDefault()
     // ✨ implement
+    axios.post(`http://localhost:9000/api/login`, values)
+      .then(res => {
+        console.log(res)
+        localStorage.setItem('token', res.data.token)
+        //I need to put a navigate here to send me to articles
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
-
-
-  console.log(values.username)
-  console.log(values.password)
   
   const isDisabled = () => {
    if (values.username.trim().length >= 3 && values.password.trim().length >= 8) {
