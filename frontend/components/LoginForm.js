@@ -17,8 +17,6 @@ export default function LoginForm(props) {
 
 
 
-
-
 //VVVVV I built these two out, I think they might need to go into the App.js
 
   const onSubmit = evt => {

@@ -12,8 +12,7 @@ export default function Articles(props) {
   useEffect(() => {
     // ✨ grab the articles here, on first render only
     props.getArticles()
-  }, []); //<<<<< IMPORTANT, NEED TO PULL IN getArticles() IN FROM
-  //App.js SOMEHOW!!
+  }, []); 
 
   console.log(props.articles)
 
