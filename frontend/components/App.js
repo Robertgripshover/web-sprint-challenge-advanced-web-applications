@@ -35,7 +35,7 @@ export default function App() {
     // using the helper above.
     window.localStorage.removeItem('token')
     setArticles([])
-    setMessage('Goodbye, come again')
+    setMessage('Goodbye!')
     redirectToLogin()
   }
 
