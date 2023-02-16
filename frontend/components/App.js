@@ -98,7 +98,9 @@ export default function App() {
     axiosWithAuth().post('/articles', article)
       .then(res => {
         console.log(res)
+        setArticles(res.data.articles)
         setMessage(res.data.message)
+        setSpinnerOn(false)
       })
       .catch(err => {
         console.log(err)
