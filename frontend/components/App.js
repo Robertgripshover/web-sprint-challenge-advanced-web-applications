@@ -114,6 +114,7 @@ export default function App() {
   }
 
   const deleteArticle = article_id => {
+    console.log(article_id)
     // ✨ implement
     setMessage('')
     setSpinnerOn(true)
