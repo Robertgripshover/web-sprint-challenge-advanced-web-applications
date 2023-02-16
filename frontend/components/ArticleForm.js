@@ -37,8 +37,15 @@ export default function ArticleForm(props) {
     // ✨ implement
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
+    // const newArticleForm = props.currentArticle
+    // const createArticle = props.postArticle()
+    // const editArticle = props.postArticle()
+    // const payload = {...newArticleForm}
+    // const callBack = newArticleForm.article_id ? editArticle : createArticle
+    // callBack(payload)
 
     props.postArticle(values)
+    
   }
 
   const isDisabled = () => {
