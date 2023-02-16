@@ -104,7 +104,7 @@ export default function App() {
       })
       .catch(err => {
         console.log(err)
-        setMessage(err.data.message)
+        setSpinnerOn(false)
       })
   }
 
@@ -115,6 +115,18 @@ export default function App() {
 
   const deleteArticle = article_id => {
     // ✨ implement
+    setMessage('')
+    setSpinnerOn(true)
+    axiosWithAuth().delete(`/articles:${article_id}`)
+      .then(res => {
+        console.log(res)
+        setMessage(res.data.message)
+        setSpinnerOn(false)
+      })
+      .catch(err => {
+        console.log(err)
+        setSpinnerOn(false)
+      })
   }
 
   return (
@@ -134,7 +146,7 @@ export default function App() {
           <Route path="articles" element={
             <>
               <ArticleForm postArticle={postArticle}/>
-              <Articles getArticles={getArticles} articles={articles}/>
+              <Articles getArticles={getArticles} deleteArticle={deleteArticle} articles={articles}/>
             </>
           } />
         </Routes>

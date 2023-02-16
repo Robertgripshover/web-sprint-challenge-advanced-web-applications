@@ -14,7 +14,18 @@ export default function ArticleForm(props) {
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
     // if it's truthy, we should set its title, text and topic into the corresponding
     // values of the form. If it's not, we should reset the form back to initial values.
-  })
+    if(props.currentArticle === true) {
+      return setValues({
+          title: props.currentArticle.title,
+          text: props.currentArticle.text,
+          topic: props.currentArticle.topic
+        })
+      } 
+      else {
+        setValues(initialFormValues)
+      }
+  }, []) //<<<< I might need to take out this rerender empty array.
+  //it doesnt work without it there currently but I think it is also messing it up
 
   const onChange = evt => {
     const { id, value } = evt.target
@@ -26,6 +37,8 @@ export default function ArticleForm(props) {
     // ✨ implement
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
+
+    props.postArticle(values)
   }
 
   const isDisabled = () => {

@@ -14,6 +14,14 @@ export default function Articles(props) {
     props.getArticles()
   }, []); 
 
+  const isDisabled = () => {
+    if (props.currentArticleId === null) {
+     return true
+    } else {
+     return false
+    }
+   }
+
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
     // and use the articles prop to generate articles
@@ -31,8 +39,8 @@ export default function Articles(props) {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={true} onClick={Function.prototype}>Edit</button>
-                  <button disabled={true} onClick={Function.prototype}>Delete</button>
+                  <button disabled={isDisabled()} onClick={Function.prototype}>Edit</button>
+                  <button disabled={isDisabled()} onClick={() => {props.deleteArticle(art.article_id)}}>Delete</button>
                 </div>
               </div>
             )
