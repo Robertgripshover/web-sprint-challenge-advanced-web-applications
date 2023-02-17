@@ -44,7 +44,10 @@ export default function ArticleForm(props) {
     // const callBack = newArticleForm.article_id ? editArticle : createArticle
     // callBack(payload)
 
-    props.postArticle(values)
+    //I need to do something like, "if article has an id then props.postArticle(values)"
+    //"if article does have an id then props.updateArticle(values)"
+
+    props.postArticle(values) //this function can upload a new article.
     
   }
 
