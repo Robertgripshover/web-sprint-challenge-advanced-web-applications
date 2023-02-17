@@ -74,7 +74,6 @@ export default function App() {
     setSpinnerOn(true)
     axiosWithAuth().get('/articles')
       .then(res => {
-        console.log(res)
         setArticles(res.data.articles)
         setMessage(res.data.message)
         setSpinnerOn(false)
@@ -111,6 +110,16 @@ export default function App() {
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
     // You got this!
+    setMessage('')
+    setSpinnerOn(true)
+    axiosWithAuth().put(`articles:${article_id}`, article)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+        setSpinnerOn(false)
+      })
   }
 
   const deleteArticle = article_id => {
@@ -146,8 +155,8 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login}/>} /> {/*<<< added this login={login} props looking thing */}
           <Route path="articles" element={
             <>
-              <ArticleForm postArticle={postArticle} updateArticle={updateArticle} currentArticleId={currentArticleId}/>
-              <Articles getArticles={getArticles} deleteArticle={deleteArticle} articles={articles}/>
+              <ArticleForm postArticle={postArticle} currentArticleId={currentArticleId}/>
+              <Articles getArticles={getArticles} deleteArticle={deleteArticle} updateArticle={updateArticle} articles={articles}/>
             </>
           } />
         </Routes>

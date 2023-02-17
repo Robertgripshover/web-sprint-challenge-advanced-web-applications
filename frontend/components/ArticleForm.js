@@ -9,7 +9,7 @@ export default function ArticleForm(props) {
   // ✨ where are my props? Destructure them here
  //not sure what to do here yet
 
- console.log(props.articles)
+//  console.log(props)
 
   useEffect(() => {
     // ✨ implement
@@ -26,8 +26,7 @@ export default function ArticleForm(props) {
       else {
         setValues(initialFormValues)
       }
-  }, []) //<<<< I might need to take out this rerender empty array.
-  //it doesnt work without it there currently but I think it is also messing it up
+  }, [/*props.currentArticle.article_id*/]) //<<< tells when there is a change in state
 
   const onChange = evt => {
     const { id, value } = evt.target
