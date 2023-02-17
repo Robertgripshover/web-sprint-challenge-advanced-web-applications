@@ -146,7 +146,7 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login}/>} /> {/*<<< added this login={login} props looking thing */}
           <Route path="articles" element={
             <>
-              <ArticleForm postArticle={postArticle}/>
+              <ArticleForm postArticle={postArticle} updateArticle={updateArticle} currentArticleId={currentArticleId}/>
               <Articles getArticles={getArticles} deleteArticle={deleteArticle} articles={articles}/>
             </>
           } />

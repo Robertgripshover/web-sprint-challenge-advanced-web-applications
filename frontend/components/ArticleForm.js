@@ -9,13 +9,15 @@ export default function ArticleForm(props) {
   // ✨ where are my props? Destructure them here
  //not sure what to do here yet
 
+ console.log(props.articles)
+
   useEffect(() => {
     // ✨ implement
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
     // if it's truthy, we should set its title, text and topic into the corresponding
     // values of the form. If it's not, we should reset the form back to initial values.
     if(props.currentArticle === true) {
-      return setValues({
+      return setValues({...values,
           title: props.currentArticle.title,
           text: props.currentArticle.text,
           topic: props.currentArticle.topic
@@ -37,17 +39,14 @@ export default function ArticleForm(props) {
     // ✨ implement
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
-    // const newArticleForm = props.currentArticle
-    // const createArticle = props.postArticle()
-    // const editArticle = props.postArticle()
-    // const payload = {...newArticleForm}
-    // const callBack = newArticleForm.article_id ? editArticle : createArticle
-    // callBack(payload)
+  
+   
 
     //I need to do something like, "if article has an id then props.postArticle(values)"
     //"if article does have an id then props.updateArticle(values)"
-
-    props.postArticle(values) //this function can upload a new article.
+    props.currentArticle.article_id === true ? props.updateArticle(values) :  props.postArticle(values)
+    
+    //I know the props.postArticle(values) is working by itself
     
   }
 
