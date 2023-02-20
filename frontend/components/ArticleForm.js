@@ -39,8 +39,9 @@ export default function ArticleForm(props) {
       //I need to do something like, "if article has an id then props.postArticle(values)"
     //"if article does have an id then props.updateArticle(values)"
     evt.preventDefault()
+    const {currentArticle} = props.currentArticleId
     console.log(props.currentArticleId) //<<<< the correct ID in coming in here
-    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values)  
+    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle({currentArticle, values})  
     setValues(initialFormValues)       
   }
 
