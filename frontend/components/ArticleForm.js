@@ -10,10 +10,6 @@ export default function ArticleForm(props) {
  //not sure what to do here yet
 
 
- 
- 
-
- console.log(props.articles[props.currentArticleId - 1])
  //^^^^^^^^^^^^^^^^^ Need to start here
 
 
@@ -24,10 +20,12 @@ export default function ArticleForm(props) {
     // if it's truthy, we should set its title, text and topic into the corresponding
     // values of the form. If it's not, we should reset the form back to initial values.
     if(props.currentArticleId !== null) {
-      return setValues({...values,
-          title: 'hello',
-          text: 'hello',
-          topic: 'hello'
+      const myCurrentArticle = props.articles[props.currentArticleId - 1]
+      const nonObjectArticle = Object.values(myCurrentArticle)
+         return setValues({...values,
+            title: nonObjectArticle[1],
+            text: nonObjectArticle[2],
+            topic: nonObjectArticle[3]
         })
       } 
       else {

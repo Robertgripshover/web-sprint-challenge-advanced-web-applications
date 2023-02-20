@@ -15,7 +15,9 @@ export default function Articles(props) {
   }, []); 
 
 
-  // console.log(props.article)
+  // const myCurrentArticle = props.articles[props.currentArticleId - 1]
+  // const nonObjectArticle = Object.values(myCurrentArticle)
+  // console.log(nonObjectArticle)
 
   const isDisabled = () => {
     if (props.currentArticleId !== null) {
@@ -46,7 +48,6 @@ export default function Articles(props) {
                 <div>
                   <button disabled={isDisabled()} onClick={() => {props.setCurrentArticleId(art.article_id)}}>Edit</button>
                   <button disabled={isDisabled()} onClick={() => {props.deleteArticle(art.article_id)}}>Delete</button>
-                  <button onClick={() => {console.log('heloo')}}>Test Click article</button>
                 </div>
               </div>
             )

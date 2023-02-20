@@ -50,7 +50,6 @@ export default function App() {
     setSpinnerOn(true)
     axios.post(`http://localhost:9000/api/login`, {username, password})
       .then(res => {
-        console.log(res)
         localStorage.setItem('token', res.data.token)
         setMessage(res.data.message)
         redirectToArticles()
