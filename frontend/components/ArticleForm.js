@@ -9,8 +9,6 @@ export default function ArticleForm(props) {
   // ✨ where are my props? Destructure them here
  //not sure what to do here yet
 
- console.log(props.currentArticleId)
-
   useEffect(() => {
     // ✨ implement
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
@@ -18,9 +16,9 @@ export default function ArticleForm(props) {
     // values of the form. If it's not, we should reset the form back to initial values.
     if(props.currentArticleId !== null) {
       return setValues({...values,
-          title: 'Hi',
+          title: 'hey bob',
           text: 'currentArticleId Is True',
-          topic: 'Its working!! its working!!!!'
+          topic: 'React'
         })
       } 
       else {
@@ -38,15 +36,10 @@ export default function ArticleForm(props) {
     // ✨ implement
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
-  
-   
-
-    //I need to do something like, "if article has an id then props.postArticle(values)"
+      //I need to do something like, "if article has an id then props.postArticle(values)"
     //"if article does have an id then props.updateArticle(values)"
-    props.currentArticle.article_id === true ? props.updateArticle(values) :  props.postArticle(values)
-    
-    //I know the props.postArticle(values) is working by itself
-    
+    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(values)  
+       
   }
 
   const isDisabled = () => {
@@ -61,7 +54,7 @@ export default function ArticleForm(props) {
     // ✨ fix the JSX: make the heading display either "Edit" or "Create"
     // and replace Function.prototype with the correct function
     <form id="form" onSubmit={onSubmit}>
-      <h2>{props.currentArticleId === true ? "Edit Article" : "Create Article"}</h2>
+      <h2>{props.currentArticleId === null ? "Create Article" : "Edit Article"}</h2>
       <input
         maxLength={50}
         onChange={onChange}
@@ -84,7 +77,7 @@ export default function ArticleForm(props) {
       </select>
       <div className="button-group">
         <button disabled={isDisabled()} id="submitArticle">Submit</button>
-        <button onClick={Function.prototype}>Cancel edit</button>
+        <button onClick={console.log('need to figure out the cancel button')}>Cancel edit</button>
       </div>
     </form>
   )
