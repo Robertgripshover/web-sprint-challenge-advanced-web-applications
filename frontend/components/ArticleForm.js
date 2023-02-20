@@ -9,6 +9,15 @@ export default function ArticleForm(props) {
   // ✨ where are my props? Destructure them here
  //not sure what to do here yet
 
+
+ 
+ 
+
+ console.log(props.articles[props.currentArticleId - 1])
+ //^^^^^^^^^^^^^^^^^ Need to start here
+
+
+
   useEffect(() => {
     // ✨ implement
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
@@ -16,9 +25,9 @@ export default function ArticleForm(props) {
     // values of the form. If it's not, we should reset the form back to initial values.
     if(props.currentArticleId !== null) {
       return setValues({...values,
-          title: 'need the loaded props.currentArticle.title',
-          text: 'need the loaded props.currentArticle.text',
-          topic: 'need the loaded props.currentArticle.topic'
+          title: 'hello',
+          text: 'hello',
+          topic: 'hello'
         })
       } 
       else {
