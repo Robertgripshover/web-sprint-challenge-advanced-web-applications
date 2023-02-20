@@ -86,17 +86,13 @@ export default function App() {
   } 
 
 
-  const getArticlesAfterPostofUpdate = () => {
-    setMessage('')
-    setSpinnerOn(true)
+  const getArticlesAfterPostOrUpdate = () => {
     axiosWithAuth().get('/articles')
       .then(res => {
         setArticles(res.data.articles)
-        setSpinnerOn(false)
      })
       .catch(err => {
         console.log(err)
-        setSpinnerOn(false)
       })
   } //<<<< This is my own creation
 
@@ -109,8 +105,8 @@ export default function App() {
     setSpinnerOn(true)
     axiosWithAuth().post('/articles', article)
       .then(res => {
-        getArticlesAfterPostofUpdate()
         setMessage(res.data.message)
+        getArticlesAfterPostOrUpdate()
         setSpinnerOn(false)
       })
       .catch(err => {
@@ -126,9 +122,8 @@ export default function App() {
     setSpinnerOn(true)
     axiosWithAuth().put(`/articles/${article_id}`, article)
       .then(res => {
-        getArticlesAfterPostofUpdate()
         setMessage(res.data.message)
-        console.log(res)
+        getArticlesAfterPostOrUpdate()
         setSpinnerOn(false)
       })
       .catch(err => {
@@ -146,7 +141,7 @@ export default function App() {
       .then(res => {
         console.log(res)
         setMessage(res.data.message)
-        getArticlesAfterPostofUpdate()
+        getArticlesAfterPostOrUpdate()
         setSpinnerOn(false)
       })
       .catch(err => {
