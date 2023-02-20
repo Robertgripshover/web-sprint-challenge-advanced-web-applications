@@ -86,7 +86,6 @@ export default function App() {
   } //<<<< This function is working XXXXXXX
 
   const postArticle = article => {
-    console.log(article)
     // ✨ implement
     // The flow is very similar to the `getArticles` function.
     // You'll know what to do! Use log statements or breakpoints
@@ -95,9 +94,8 @@ export default function App() {
     setSpinnerOn(true)
     axiosWithAuth().post('/articles', article)
       .then(res => {
-        console.log(res)
-        setArticles(res.data.articles)
         setMessage(res.data.message)
+        getArticles() //<<<< Might not be a good idea to have this here EXPERIMENTAL
         setSpinnerOn(false)
       })
       .catch(err => {
