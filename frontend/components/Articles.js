@@ -18,7 +18,7 @@ export default function Articles(props) {
   // console.log(props.article)
 
   const isDisabled = () => {
-    if (props.currentArticleId === null) {
+    if (props.currentArticleId !== null) {
      return true
     } else {
      return false
