@@ -90,6 +90,7 @@ export default function App() {
     axiosWithAuth().get('/articles')
       .then(res => {
         setArticles(res.data.articles)
+        setSpinnerOn(false)
      })
       .catch(err => {
         console.log(err)
@@ -107,7 +108,6 @@ export default function App() {
       .then(res => {
         setMessage(res.data.message)
         getArticlesAfterPostOrUpdate()
-        setSpinnerOn(false)
       })
       .catch(err => {
         console.log(err)
@@ -124,7 +124,6 @@ export default function App() {
       .then(res => {
         setMessage(res.data.message)
         getArticlesAfterPostOrUpdate()
-        setSpinnerOn(false)
       })
       .catch(err => {
         console.log(err)
@@ -142,7 +141,6 @@ export default function App() {
         console.log(res)
         setMessage(res.data.message)
         getArticlesAfterPostOrUpdate()
-        setSpinnerOn(false)
       })
       .catch(err => {
         console.log(err)
