@@ -16,9 +16,9 @@ export default function ArticleForm(props) {
     // values of the form. If it's not, we should reset the form back to initial values.
     if(props.currentArticleId !== null) {
       return setValues({...values,
-          title: 'hey bob',
-          text: 'currentArticleId Is True',
-          topic: 'React'
+          title: 'need the loaded props.currentArticle.title',
+          text: 'need the loaded props.currentArticle.text',
+          topic: 'need the loaded props.currentArticle.topic'
         })
       } 
       else {
@@ -40,6 +40,12 @@ export default function ArticleForm(props) {
     //"if article does have an id then props.updateArticle(values)"
     props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(values)  
        
+  }
+
+  const onCancel = evt => {
+    evt.preventDefault()
+    setValues(initialFormValues)
+    props.setCurrentArticleId(null)
   }
 
   const isDisabled = () => {
@@ -77,7 +83,7 @@ export default function ArticleForm(props) {
       </select>
       <div className="button-group">
         <button disabled={isDisabled()} id="submitArticle">Submit</button>
-        <button onClick={console.log('need to figure out the cancel button')}>Cancel edit</button>
+        <button onClick={onCancel}>Cancel edit</button>
       </div>
     </form>
   )
