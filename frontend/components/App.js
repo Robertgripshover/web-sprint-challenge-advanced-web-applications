@@ -124,7 +124,7 @@ export default function App() {
     // You got this!
     setMessage('')
     setSpinnerOn(true)
-    axiosWithAuth().put(`articles:${article_id}`, article)
+    axiosWithAuth().put(`/articles/${article_id}`, article)
       .then(res => {
         console.log(res)
       })
@@ -139,7 +139,7 @@ export default function App() {
     // ✨ implement
     setMessage('')
     setSpinnerOn(true)
-    axiosWithAuth().delete(`/articles:${article_id}`)
+    axiosWithAuth().delete(`/articles/${article_id}`)
       .then(res => {
         console.log(res)
         setMessage(res.data.message)
