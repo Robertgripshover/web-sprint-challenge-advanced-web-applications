@@ -83,7 +83,22 @@ export default function App() {
         setSpinnerOn(false)
         redirectToLogin()
       })
-  } //<<<< This function is working XXXXXXX
+  } 
+
+
+  const getArticlesAfterPost = () => {
+    setMessage('')
+    setSpinnerOn(true)
+    axiosWithAuth().get('/articles')
+      .then(res => {
+        setArticles(res.data.articles)
+        setSpinnerOn(false)
+      })
+      .catch(err => {
+        console.log(err)
+        setSpinnerOn(false)
+      })
+  } //<<<< This is my own creation
 
   const postArticle = article => {
     // ✨ implement
@@ -94,15 +109,15 @@ export default function App() {
     setSpinnerOn(true)
     axiosWithAuth().post('/articles', article)
       .then(res => {
+        getArticlesAfterPost() //<<<< Might not be a good idea to have this here, does seem to be working
         setMessage(res.data.message)
-        getArticles() //<<<< Might not be a good idea to have this here EXPERIMENTAL
         setSpinnerOn(false)
       })
       .catch(err => {
         console.log(err)
         setSpinnerOn(false)
       })
-  } //<<<< This function is working XXXXXXX
+  } 
 
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
@@ -139,7 +154,7 @@ export default function App() {
   return (
     // ✨ fix the JSX: `Spinner`, `Message`, `LoginForm`, `ArticleForm` and `Articles` expect props ❗
     <>
-      <Spinner />
+      <Spinner spinnerOn={spinnerOn} setSpinnerOn={setSpinnerOn}/>
       <Message message={message}/>
       <button id="logout" onClick={logout}>Logout from app</button>
       <div id="wrapper" style={{ opacity: spinnerOn ? "0.25" : "1" }}> {/* <-- do not change this line */}
