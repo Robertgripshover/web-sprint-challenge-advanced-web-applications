@@ -84,7 +84,7 @@ export default function App() {
         setSpinnerOn(false)
         redirectToLogin()
       })
-  }
+  } //<<<< This function is working XXXXXXX
 
   const postArticle = article => {
     console.log(article)
@@ -105,7 +105,7 @@ export default function App() {
         console.log(err)
         setSpinnerOn(false)
       })
-  }
+  } //<<<< This function is working XXXXXXX
 
   const updateArticle = ({ article_id, article }) => {
     // ✨ implement
@@ -155,8 +155,8 @@ export default function App() {
           <Route path="/" element={<LoginForm login={login}/>} /> {/*<<< added this login={login} props looking thing */}
           <Route path="articles" element={
             <>
-              <ArticleForm postArticle={postArticle} currentArticleId={currentArticleId}/>
-              <Articles getArticles={getArticles} deleteArticle={deleteArticle} updateArticle={updateArticle} articles={articles}/>
+              <ArticleForm postArticle={postArticle} updateArticle={updateArticle}/>
+              <Articles getArticles={getArticles} deleteArticle={deleteArticle} articles={articles} currentArticleId={currentArticleId} setCurrentArticleId={setCurrentArticleId}/>
             </>
           } />
         </Routes>

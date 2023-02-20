@@ -6,13 +6,6 @@ import PT from 'prop-types'
 export default function Articles(props) {
   // ✨ where are my props? Destructure them here
 
-  const {text, title, topic} = props.articles
-  const {article_id} = props.articles
-  const article = {text, title, topic}
-  console.log(props.articles)
- 
-  
-
   // ✨ implement conditional logic: if no token exists
   // we should render a Navigate to login screen (React Router v.6)
 
@@ -21,6 +14,9 @@ export default function Articles(props) {
     props.getArticles()
   }, []); 
 
+
+  // console.log(props.article)
+
   const isDisabled = () => {
     if (props.currentArticleId === null) {
      return true
@@ -28,6 +24,8 @@ export default function Articles(props) {
      return false
     }
    }
+
+   
 
   return (
     // ✨ fix the JSX: replace `Function.prototype` with actual functions
@@ -46,9 +44,9 @@ export default function Articles(props) {
                   <p>Topic: {art.topic}</p>
                 </div>
                 <div>
-                  <button disabled={isDisabled()} onClick={() => {props.updateArticle({article_id, article})}}>Edit</button>
+                  <button disabled={isDisabled()} onClick={() => {props.setCurrentArticleId(art.article_id)}}>Edit</button>
                   <button disabled={isDisabled()} onClick={() => {props.deleteArticle(art.article_id)}}>Delete</button>
-                  <button onClick={() => {console.log(art)}}></button>
+                  <button onClick={() => {console.log('heloo')}}>Test Click article</button>
                 </div>
               </div>
             )
