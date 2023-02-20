@@ -15,10 +15,6 @@ export default function Articles(props) {
   }, []); 
 
 
-  // const myCurrentArticle = props.articles[props.currentArticleId - 1]
-  // const nonObjectArticle = Object.values(myCurrentArticle)
-  // console.log(nonObjectArticle)
-
   const isDisabled = () => {
     if (props.currentArticleId !== null) {
      return true
@@ -26,7 +22,6 @@ export default function Articles(props) {
      return false
     }
    }
-
    
 
   return (
