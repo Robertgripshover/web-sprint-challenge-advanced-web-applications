@@ -93,7 +93,7 @@ export default function App() {
       .then(res => {
         setArticles(res.data.articles)
         setSpinnerOn(false)
-      })
+     })
       .catch(err => {
         console.log(err)
         setSpinnerOn(false)
