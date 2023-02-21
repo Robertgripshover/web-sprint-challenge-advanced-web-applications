@@ -11,4 +11,8 @@ test('sanity', () => {
   expect(true).toBe(false)
 })
 
+test('Sprinner renders correctly', () => {
+  render(<Spinner />)
+})
+
 
