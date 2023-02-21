@@ -49,12 +49,11 @@ export default function ArticleForm(props) {
   }
 
 
-
   const onSubmit = evt => {
     evt.preventDefault()
 
     if(props.currentArticleId === null) {
-      return props.postArticle(values)   
+      return props.postArticle(values, setValues(initialFormValues))   
      }
 
     else if(props.currentArticleId !== null) {
@@ -63,8 +62,7 @@ export default function ArticleForm(props) {
           return props.updateArticle(myNewCurrentArticle.article_id, values)
     }
   
-  }
-  
+  }  
 
 
   const isDisabled = () => {
