@@ -1,15 +1,9 @@
 import React, { useEffect } from 'react'
-import { Navigate } from 'react-router-dom'
 import PT from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 
 
 export default function Articles(props) {
-  // ✨ where are my props? Destructure them here
-
-  // ✨ implement conditional logic: if no token exists
-  // we should render a Navigate to login screen (React Router v.6)
-
 
 
   const navigate = useNavigate()
@@ -17,12 +11,9 @@ export default function Articles(props) {
   const token = localStorage.getItem('token')
 
 
-
   useEffect(() => {
-    // ✨ grab the articles here, on first render only
     token !== null ? props.getArticles() : redirectToLogin()
   }, []); 
-
 
 
   const isDisabled = () => {
@@ -35,8 +26,6 @@ export default function Articles(props) {
    
 
   return (
-    // ✨ fix the JSX: replace `Function.prototype` with actual functions
-    // and use the articles prop to generate articles
     <div className="articles">
       <h2>Articles</h2>
       {

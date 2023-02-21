@@ -8,14 +8,13 @@ import Spinner from './Spinner'
 import axios from 'axios'
 import axiosWithAuth from '../axios'
 
+
 const articlesUrl = 'http://localhost:9000/api/articles'
 const loginUrl = 'http://localhost:9000/api/login'
 
-//I THINK THAT I NEED TO PULL IN 
-//USERNAME AND PASSWORD AS PROPS FROM
-//LOGIN FORM SOMEHOW UP HERE
 
 export default function App() {
+
   // ✨ MVP can be achieved with these states
   const [message, setMessage] = useState('')
   const [articles, setArticles] = useState([])
@@ -24,8 +23,9 @@ export default function App() {
 
   // ✨ Research `useNavigate` in React Router v.6
   const navigate = useNavigate()
-  const redirectToLogin = () => { /* ✨ implement */ navigate('/')}
-  const redirectToArticles = () => { /* ✨ implement */ navigate('/articles')}
+  const redirectToLogin = () => { navigate('/')}
+  const redirectToArticles = () => { navigate('/articles')}
+
 
   const logout = () => {
     // ✨ implement
@@ -38,6 +38,7 @@ export default function App() {
     setMessage('Goodbye!')
     redirectToLogin()
   }
+
 
   const login = ({ username, password }) => {
     // ✨ implement
@@ -60,6 +61,7 @@ export default function App() {
         redirectToLogin()
       })
   }
+
 
   const getArticles = () => {
     // ✨ implement
@@ -98,6 +100,7 @@ export default function App() {
       })
   } //<<<< This is my own creation
 
+
   const postArticle = article => {
     // ✨ implement
     // The flow is very similar to the `getArticles` function.
@@ -114,8 +117,8 @@ export default function App() {
         console.log(err)
         setSpinnerOn(false)
       })
-
   } 
+
 
   const updateArticle = (article_id, article) => {
     // ✨ implement
@@ -126,14 +129,14 @@ export default function App() {
       .then(res => {
         setMessage(res.data.message)
         getArticlesAfterPostOrUpdate()
-        setCurrentArticleId(null) //added this in
+        setCurrentArticleId(null)
       })
       .catch(err => {
         console.log(err)
         setSpinnerOn(false)
-      })
-  
+      })  
   }
+
 
   const deleteArticle = article_id => {
     console.log(article_id)
@@ -149,9 +152,9 @@ export default function App() {
       .catch(err => {
         console.log(err)
         setSpinnerOn(false)
-      })
-      
+      })      
   }
+  
 
   return (
     // ✨ fix the JSX: `Spinner`, `Message`, `LoginForm`, `ArticleForm` and `Articles` expect props ❗
