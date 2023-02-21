@@ -91,7 +91,7 @@ export default function App() {
       .then(res => {
         setArticles(res.data.articles)
         setSpinnerOn(false)
-     })
+      })
       .catch(err => {
         console.log(err)
       })
@@ -113,6 +113,7 @@ export default function App() {
         console.log(err)
         setSpinnerOn(false)
       })
+
   } 
 
   const updateArticle = ({ article_id, article }) => {
@@ -129,6 +130,7 @@ export default function App() {
         console.log(err)
         setSpinnerOn(false)
       })
+  
   }
 
   const deleteArticle = article_id => {
@@ -146,6 +148,7 @@ export default function App() {
         console.log(err)
         setSpinnerOn(false)
       })
+      
   }
 
   return (

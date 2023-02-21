@@ -13,19 +13,25 @@ export default function ArticleForm(props) {
     // Every time the `currentArticle` prop changes, we should check it for truthiness:
     // if it's truthy, we should set its title, text and topic into the corresponding
     // values of the form. If it's not, we should reset the form back to initial values.
+    console.log(props.currentArticleId)
+
+    if(props.currentArticleId === null) {
+      return setValues(initialFormValues)
+      } 
+
     if(props.currentArticleId !== null) {
       const myCurrentArticle = props.articles[props.currentArticleId - 1]
       const nonObjectArticle = Object.values(myCurrentArticle)
-         return setValues({...values,
-            title: nonObjectArticle[1],
-            text: nonObjectArticle[2],
-            topic: nonObjectArticle[3]
-        })
-      } 
-      else {
-        setValues(initialFormValues)
+           return setValues({...values,
+              title: nonObjectArticle[1],
+              text: nonObjectArticle[2],
+              topic: nonObjectArticle[3]
+          })
       }
-  }, [props.currentArticleId]) //<<< tells when there is a change in state
+
+  }, [props.currentArticleId]) //Whatever you put in here will rerender when there is a state change
+
+
 
   const onChange = evt => {
     const { id, value } = evt.target
@@ -39,9 +45,7 @@ export default function ArticleForm(props) {
       //I need to do something like, "if article has an id then props.postArticle(values)"
     //"if article does have an id then props.updateArticle(values)"
     evt.preventDefault()
-    const {currentArticle} = props.currentArticleId
-    console.log(props.currentArticleId) //<<<< the correct ID in coming in here
-    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle({currentArticle, values})  
+    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values)  
     setValues(initialFormValues)       
   }
 
