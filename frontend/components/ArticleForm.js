@@ -39,13 +39,31 @@ export default function ArticleForm(props) {
   }
 
   const onSubmit = evt => {
+    evt.preventDefault()
+
+
+
+
+    if(props.currentArticleId === null) {
+      return props.postArticle(values)
+    }
+
+    if(props.currentArticleId !== null) {
+      const myNewCurrentArticle = props.articles[props.currentArticleId - 1]
+          return props.updateArticle(myNewCurrentArticle, values)
+      }
+    
+
+
    // ✨ implement
     // We must submit a new post or update an existing one,
     // depending on the truthyness of the `currentArticle` prop.
       //I need to do something like, "if article has an id then props.postArticle(values)"
     //"if article does have an id then props.updateArticle(values)"
-    evt.preventDefault()
-    props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values)  
+    
+    // props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values) 
+    
+    
     setValues(initialFormValues)       
   }
 
