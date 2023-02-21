@@ -3,7 +3,12 @@
 
 //It just needs two diffent tests, does it turn on 
 
+import React from 'react'
+import Spinner from './Spinner'
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
+
 test('sanity', () => {
   expect(true).toBe(false)
 })
+
 

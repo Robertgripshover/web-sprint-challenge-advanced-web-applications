@@ -42,28 +42,11 @@ export default function ArticleForm(props) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const onCancel = evt => {
+    evt.preventDefault()
+    setValues(initialFormValues)
+    props.setCurrentArticleId(null)
+  }
 
 
 
@@ -72,22 +55,17 @@ export default function ArticleForm(props) {
 
     if(props.currentArticleId === null) {
       return props.postArticle(values)   
-    }
+     }
 
     else if(props.currentArticleId !== null) {
       const myNewCurrentArticle = props.articles[props.currentArticleId - 1]
         console.log(myNewCurrentArticle.article_id)
           return props.updateArticle(myNewCurrentArticle.article_id, values)
     }
-   
+  
   }
   
 
-  const onCancel = evt => {
-    evt.preventDefault()
-    setValues(initialFormValues)
-    props.setCurrentArticleId(null)
-  }
 
   const isDisabled = () => {
     if (values.title.trim().length > 0 && values.text.trim().length > 0 && values.topic.trim().length > 0) {
