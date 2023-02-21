@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PT from 'prop-types'
 
+
 const initialFormValues = { title: '', text: '', topic: '' }
 
+
 export default function ArticleForm(props) {
+
 
   const [values, setValues] = useState(initialFormValues)
 
@@ -17,7 +20,7 @@ export default function ArticleForm(props) {
 
     if(props.currentArticleId === null) {
       return setValues(initialFormValues)
-      } 
+    } 
 
     if(props.currentArticleId !== null) {
       const myCurrentArticle = props.articles[props.currentArticleId - 1]
@@ -27,7 +30,7 @@ export default function ArticleForm(props) {
               text: nonObjectArticle[2],
               topic: nonObjectArticle[3]
           })
-      }
+    }
 
   }, [props.currentArticleId]) 
 
@@ -51,8 +54,7 @@ export default function ArticleForm(props) {
           return props.updateArticle(myNewCurrentArticle.article_id, values)
     }
   
-   setValues({initialFormValues})    
-          
+            
   }
 
   const onCancel = evt => {
