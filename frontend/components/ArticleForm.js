@@ -63,8 +63,8 @@ export default function ArticleForm(props) {
     //"if article does have an id then props.updateArticle(values)"
     
     // props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values) 
-    
-    
+   setValues({...values, 
+  initialFormValues})    
           
   }
 
