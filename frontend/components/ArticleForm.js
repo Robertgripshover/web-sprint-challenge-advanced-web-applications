@@ -41,11 +41,37 @@ export default function ArticleForm(props) {
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const onSubmit = evt => {
     evt.preventDefault()
 
     if(props.currentArticleId === null) {
-      return props.postArticle(values)    
+      return props.postArticle(values)   
     }
 
     else if(props.currentArticleId !== null) {
@@ -53,9 +79,9 @@ export default function ArticleForm(props) {
         console.log(myNewCurrentArticle.article_id)
           return props.updateArticle(myNewCurrentArticle.article_id, values)
     }
-  
-            
+   
   }
+  
 
   const onCancel = evt => {
     evt.preventDefault()
