@@ -116,7 +116,7 @@ export default function App() {
 
   } 
 
-  const updateArticle = ( article_id, article ) => {
+  const updateArticle = (article_id, article) => {
     // ✨ implement
     // You got this!
     setMessage('')

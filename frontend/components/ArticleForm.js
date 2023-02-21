@@ -45,12 +45,13 @@ export default function ArticleForm(props) {
 
 
     if(props.currentArticleId === null) {
-      return props.postArticle(values)
+      return props.postArticle(values)      
     }
 
-    if(props.currentArticleId !== null) {
+    else if(props.currentArticleId !== null) {
       const myNewCurrentArticle = props.articles[props.currentArticleId - 1]
-          return props.updateArticle(myNewCurrentArticle, values)
+        console.log(myNewCurrentArticle.article_id)
+          return props.updateArticle(myNewCurrentArticle.article_id, values)
       }
     
 
@@ -64,7 +65,7 @@ export default function ArticleForm(props) {
     // props.currentArticleId === null ? props.postArticle(values) : props.updateArticle(props.currentArticleId, values) 
     
     
-    setValues(initialFormValues)       
+          
   }
 
   const onCancel = evt => {
